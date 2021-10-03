@@ -11,7 +11,7 @@ const int pin_F = 7;
 const int pin_G = 8; 
 const int pin_H = 9; // dot
 
-const int pin_hundres = 13; // Hundreds
+const int pin_hundres = 13; // Hundres
 const int pin_tens = 12; // Tens
 const int pin_units = 11; // Units
 const int pin_decimals = 10; // Decimals
