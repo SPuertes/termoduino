@@ -16,8 +16,12 @@ const int pin_tens = 12; // Tens
 const int pin_units = 11; // Units
 const int pin_decimals = 10; // Decimals
 
+const int v_out = A1;
+const int v_reference = A0;
+
+const float conversion_factor = 283; // 2.83mV  
+
 float temperature;
-String numberString;
 
 const int minus_symbol = 10;
 
@@ -52,14 +56,18 @@ void setup() {
  pinMode(pin_E, OUTPUT);
  pinMode(pin_F, OUTPUT);
  pinMode(pin_G, OUTPUT);
- pinMode(pin_H, OUTPUT); 
+ pinMode(pin_H, OUTPUT);
+
+ // Change Analogic reference
+ analogReference(EXTERNAL); //DEFAULT = 5V , INTERNAL = 1,1V AND EXTERNAL = V_INPUT
 }
 
 void loop() {
 
- if(counter == 1000){
+ if(counter >= 1000){
   counter = -1;
-  temperature = ((analogRead(1) - analogRead(0)) * 500) / 1023.0;
+
+  temperature = ((analogRead(v_out) - analogRead(v_reference)) * conversion_factor) / 1023.0;
  }
 
  printNumber(temperature);
@@ -110,7 +118,7 @@ void printDigit(int number, int digit){
   
   digitalWrite(digit, LOW);
 
-  delay(2); // time to no overlap
+  delay(5); // time to not overlap
 }
 
 void resetNumbers(){
