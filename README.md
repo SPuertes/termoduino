@@ -1,2 +1,2 @@
 # Termoduino
-Pequeño proyecto de un termómetro ambiental con un arduino y un sensor de temperatura LM35
+Termómetro ambiental hecho con un Arduino UNO y un sensor de temperatura LM35
